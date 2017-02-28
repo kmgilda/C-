@@ -1,44 +1,13 @@
 #include<iostream>
 using namespace std;
 
-	void minheapify(int a[], int r, int size)
-	{
-		int left = (2 * r) + 1;
-		int right = (2 * r) + 2;
-		int smallest;
-		if ((left < size) && (a[left] < a[r]))
-		{	smallest = left; }
-		else 
-		{	smallest = r; }
-		if ((right < size) && (a[right] < a[smallest]))
-		{	smallest = right; }
-		if (smallest != r)
-			{
-				int tmp = a[smallest];
-				a[smallest] = a[r];
-				a[r] = tmp;
-				minheapify(a,smallest,size);				
-			}
-			
-	}
 
-	void buildheap(int a[], int size)
-	{
-		int i = (size / 2);		
-		for (; i >= 0; i--)
-			{
-				minheapify(a,i,size);
-			}
-
-	}
-
-	int flag = 0;
 	
 
 	int GreedyActivitySelector(int s[], int f[], int n, int a[])
 	{
 		a[0] = 1;
-		flag = 1;		
+		int flag = 1;		
 		int k = 0;
 		for (int m = 1; m < n; m++)  
 			{
