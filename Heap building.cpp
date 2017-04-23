@@ -1,25 +1,24 @@
 #include<iostream>
 using namespace std;
 
-	void maxheapify(int a[], int r, int size)
+	void maxheapify(int a[], int r, int size, int tracker[])
 	{
-		int left = (2 * (r + 1)) - 1;
-		int right = 2 * (r + 1);
+		int left = (2 * r) + 1;
+		int right = (2 * r) + 2;
 		int largest;
 		if ((left < size) && (a[left] > a[r]))
 		{	largest = left; }
 		else 
 		{	largest = r; }
-		if ((right < size) && (a[right] > a[r]))
+		if ((right < size) && (a[right] > a[largest]))
 		{	largest = right; }
 		if (largest != r)
 			{
-				int tmp = a[largest];
+				int tmp = a[largest];								
 				a[largest] = a[r];
-				a[r] = tmp;
-				maxheapify(a,largest,10);				
-			}
-			
+				a[r] = tmp;					
+				maxheapify(a,largest,size,tracker);				
+			}	
 	}
 
 	void buildheap(int a[], int size)
